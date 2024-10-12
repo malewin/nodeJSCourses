@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Sans+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <title>Редактирование списка</title>
+    <link rel="stylesheet" href="ownerPage.css">
+</head>
+
+<body>
+    <div class="owner_pg_bc">
+
+    </div>
+    <main class="table_pos">
+        <div id="itemList">
+            <div class="background_color">
+
+            </div>
+            <h3 class="order_table_heading">Orders Table</h3>
+            <div class="header_row_pos">
+                <div class="headerRow">
+                    <div class="headerCell">Domain</div>
+                    <div class="headerCell">Rental time</div>
+                    <div class="headerCell">End of Rent</div>
+                    <div class="headerCell">Arendator</div>
+                </div>
+            </div>
+            <div class="grid" id="gridContainer"></div>
+            <div id="addElement">
+                <h2>+add Order</h2>
+                <input type="text" id="domainInput" placeholder="Domain">
+                <input type="text" id="rentalsTimeInput" placeholder="Rentals time">
+                <input type="text" id="dealDateInput" placeholder="Deal Date">
+                <input type="text" id="arendatorInput" placeholder="Arendator link">
+                <button id="saveNewBtn">Save</button>
+            </div>
+        </div>
+    </main>
+    <script src="script_owner.js"></script>
+</body>
+
+</html>

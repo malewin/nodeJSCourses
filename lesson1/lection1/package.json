@@ -1,0 +1,12 @@
+{
+    "name": "lesson1",
+    "version": "1.0.0",
+    "main": "httpServer.js",
+    "scripts": {
+        "start": "node ./httpServer.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": ""
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>{{user.id}}'s Profile</h1>
+    </header>
+    <main>
+        <p>ID: {{user.id}}</p>
+        <p>Подписка: {{user.hasPaySubscribe}} - {{user.rateStatus}}</p>
+        <h2>Your Songs</h2>
+        <ul>
+            {{#if songs.length}}
+                {{#each songs}}
+                <li>{{this.title}} - {{this.artist}} <button onclick="deleteSong('{{this.id}}')">Удалить</button></li>
+                {{/each}}
+            {{else}}
+                <p>No songs uploaded. <button onclick="uploadSong()">Upload Song</button></p>
+            {{/if}}
+        </ul>
+        
+        <button id="uploadAlbumBtn" onclick="uploadAlbum()">Upload Album</button>
+        <div id="subscription">
+            <h2>Select Subscription</h2>
+            <form>
+                <label>
+                    <input type="radio" name="subscription" value="free"> Free
+                    <p>Basic access</p>
+                </label>
+                <label>
+                    <input type="radio" name="subscription" value="album"> Album - $X
+                    <p>Access to albums</p>
+                </label>
+                <label>
+                    <input type="radio" name="subscription" value="premium"> Premium - $Y
+                    <p>Full access</p>
+                </label>
+                <button type="button" onclick="purchaseSubscription()">Купить подписку</button>
+            </form>
+        </div>
+        <button style="color:red;" onclick="deleteAccount('{{user.id}}')">Удалить аккаунт</button>
+    </main>
+    <script src="/script.js"></script>
+</body>
+</html>

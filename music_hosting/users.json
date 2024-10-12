@@ -1,0 +1,55 @@
+[
+    {
+        "id": 1,
+        "hasPaySubscribe": false,
+        "rateStatus": "free",
+        "songs": []
+    },
+    {
+        "id": 2,
+        "walletAddress": "UQD2pB5Rpf4FpPBrtnDAa3EVKpm0B-McyzmCgQvVIfxrt_3q",
+        "hasPaySubscribe": false,
+        "rateStatus": "free",
+        "songs": []
+    },
+    {
+        "id": 3,
+        "walletAddress": "UQD2pB5Rpf4FpPBrtnDAa3EVKpm0B-McyzmCgQvVIfxrt_3q",
+        "hasPaySubscribe": false,
+        "rateStatus": "free",
+        "songs": [
+            "0bd60361c26708c8a8de4feef134b6d1.mp3"
+        ]
+    },
+    {
+        "id": 4,
+        "walletAddress": "UQBJsId1DejMK3qtlXuwz80hzMfNPiP1kmm71VhR13CHUFml",
+        "hasPaySubscribe": true,
+        "rateStatus": "album",
+        "songs": [
+            "/Users/viktortarkhanov/Desktop/nodeJSCourse/music_hosting/uploads/Artists/4/mayatnik.mp3",
+            "/Users/viktortarkhanov/Desktop/nodeJSCourse/music_hosting/uploads/Artists/4/gordecCATCHED.mp3",
+            "/Users/viktortarkhanov/Desktop/nodeJSCourse/music_hosting/uploads/Artists/4/PesVSWolf.mp3"
+        ]
+    },
+    {
+        "id": 5,
+        "walletAddress": "UQC0FzE1kL6IXUH2MGWDKTzUXYx8yY3AmjP9_d5yJpy_mSdg",
+        "hasPaySubscribe": true,
+        "rateStatus": "premium",
+        "songs": [
+            "/Users/viktortarkhanov/Desktop/nodeJSCourse/music_hosting/uploads/Artists/5/mayatnik.mp3",
+            "/Users/viktortarkhanov/Desktop/nodeJSCourse/music_hosting/uploads/Artists/5/TimeWorkAge.mp3",
+            "/Users/viktortarkhanov/Desktop/nodeJSCourse/music_hosting/uploads/Artists/5/gordecCATCHED.mp3",
+            "/Users/viktortarkhanov/Desktop/nodeJSCourse/music_hosting/uploads/Artists/5/PesVSWolf.mp3",
+            "/Users/viktortarkhanov/Desktop/nodeJSCourse/music_hosting/uploads/Artists/5/QuitMyJob.mp3",
+            "/Users/viktortarkhanov/Desktop/nodeJSCourse/music_hosting/uploads/Artists/5/NMD.mp3",
+            "/Users/viktortarkhanov/Desktop/nodeJSCourse/music_hosting/uploads/Artists/5/iceBERG.mp3",
+            "/Users/viktortarkhanov/Desktop/nodeJSCourse/music_hosting/uploads/Artists/5/может ты уже 444.mp3",
+            "/Users/viktortarkhanov/Desktop/nodeJSCourse/music_hosting/uploads/Artists/5/NISHA.mp3",
+            "/Users/viktortarkhanov/Desktop/nodeJSCourse/music_hosting/uploads/Artists/5/people chatting but i fuck it111.mp3",
+            "/Users/viktortarkhanov/Desktop/nodeJSCourse/music_hosting/uploads/Artists/5/otpusk na bali 2.mp3",
+            "/Users/viktortarkhanov/Desktop/nodeJSCourse/music_hosting/uploads/Artists/5/KEK.mp3"
+        ]
+    }
+]
