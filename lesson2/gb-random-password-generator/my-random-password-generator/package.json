@@ -1,0 +1,21 @@
+{
+    "name": "gb-random-password-generator",
+    "version": "1.0.0",
+    "description": "A simple library for generating random passwords.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ./index.js"
+
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/malewin/my-random-password-generator.git"
+    },
+    "keywords": [
+        "password",
+        "generator",
+        "random"
+    ],
+    "author": "Your Name",
+    "license": "MIT"
+}
