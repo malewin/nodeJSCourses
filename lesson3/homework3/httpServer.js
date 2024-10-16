@@ -6,7 +6,7 @@ const path = require('path');
 const pathForWriteDB = path.resolve(__dirname, 'counters.json');
 
 // Проверка наличия файла и его создание
-async function initializeCounters() {
+async function initCounters() {
     try {
         await fs.access(pathForWriteDB);
     } catch {
@@ -18,7 +18,7 @@ async function initializeCounters() {
     }
 }
 
-// Промежуточный обработчик для инкрементации счётчика
+// Промежуточный обработчик для увеличения счётчика
 app.use(async(req, res, next) => {
     try {
         const data = await fs.readFile(pathForWriteDB);
@@ -35,14 +35,12 @@ app.use(async(req, res, next) => {
     next();
 });
 
-// Корневая страница
 app.get('/', async(req, res) => {
     const data = await fs.readFile(pathForWriteDB);
     const counters = JSON.parse(data);
     res.send(`<h1>Корневая страница</h1><br><p>Количество просмотров: ${counters['/']}</p><a href='/about'>Ссылка на страницу about</a>`);
 });
 
-// Страница about
 app.get('/about', async(req, res) => {
     const data = await fs.readFile(pathForWriteDB);
     const counters = JSON.parse(data);
@@ -51,7 +49,7 @@ app.get('/about', async(req, res) => {
 
 const port = 3000;
 
-initializeCounters().then(() => {
+initCounters().then(() => {
     app.listen(port, () => {
         console.log(`Сервер запущен на порту ${port}`);
     });
