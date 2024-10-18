@@ -131,11 +131,14 @@ router.post('/:id/songs', upload.single('file'), (req, res) => {
     // Переименовать временный файл в конечный
     fs.renameSync(req.file.path, uniqueFilePath);
 
-    user.songs.push(uniqueFilePath); // Сохраняем путь к файлу пользователя
+    // Сохраняем путь к файлу пользователя, используя относительный путь
+    const relativePath = path.relative(__dirname, uniqueFilePath); // Относительный путь к файлу.
+    user.songs.push(`/${relativePath}`); // Сохраняем относительный путь в массив песен.
     writeUsersToFile(users);
 
     res.send('Song uploaded successfully.');
 });
+
 
 
 // Получение списка песен пользователя
@@ -157,18 +160,21 @@ router.delete('/:id/songs/:songName', (req, res) => {
 
     if (!user) return res.status(404).send('User not found.');
 
-    // Удаляем песню из списка и удаляем файл
-    user.songs = user.songs.filter(song => song !== songName);
+    // Удаляем песню из списка
+    user.songs = user.songs.filter(song => song.split('/').pop() !== songName); // Проверяем только по имени файла.
+
     const userFolder = path.join(__dirname, '../uploads/Artists', userId.toString());
-    const filePath = path.join(userFolder, songName);
+    const filePath = path.join(userFolder, songName); // Имя файла должно соответствовать только без пути.
 
     if (fs.existsSync(filePath)) {
         fs.unlinkSync(filePath);
     }
 
     writeUsersToFile(users);
-    res.send('Song deleted successfully.');
+    res.send({ message: 'Song deleted successfully.' });
 });
+
+
 
 // router.get('/:id', (req, res) => {
 //     const userId = parseInt(req.params.id, 10);

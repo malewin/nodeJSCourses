@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "firstName": "Jack",
+        "secondName": "Dolson",
+        "age": 19,
+        "city": "Chikago"
+    },
+    {
+        "id": 3,
+        "firstName": "Max",
+        "secondName": "Rust",
+        "age": 29,
+        "city": "Los Angeles"
+    },
+    {
+        "id": 4,
+        "firstName": "Alex",
+        "secondName": "Major",
+        "age": 23,
+        "city": "San Qventin"
+    }
+]

@@ -56,10 +56,29 @@ async function deleteAccount(userId) {
     // Обновление интерфейса
 }
 
-async function deleteSong(songId) {
-    await axios.delete(`/api/deleteSong/${songId}`);
-    // Обновление интерфейса
+async function deleteSong(songPath, userId) {
+    console.log("Attempting to delete:", songPath, "for userId:", userId); // Логируем переданные значения
+
+    if (!userId || userId.trim() === "") {
+        console.error('User ID is undefined'); // Сообщение об ошибке
+        console.log(userId);
+        return;
+    }
+
+    const songName = songPath.split('/').pop(); // Извлеките имя файла
+
+    try {
+        const response = await axios.delete(`/api/deleteSong/${userId}/songs/${songName}`);
+        console.log('Song deleted:', response.data); // Для отладки
+
+        // Обновите интерфейс
+        location.reload(); // Перезагрузите страницу для обновления списка песен
+    } catch (error) {
+        console.error('Error deleting song:', error);
+    }
 }
+
+
 
 async function purchaseSubscription() {
     const subscription = document.querySelector('input[name="subscription"]:checked').value;

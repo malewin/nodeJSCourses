@@ -11,14 +11,20 @@
     <header>
         <h1>Home page</h1>
         <div class="ton_connect_button" id="ton_connect_button"></div>
-        <a href="/profile/4">Your Profile</a> <!-- Замените на реальный ID -->
+        <a href="/profile/5">Your Profile</a> <!-- Замените на реальный ID --><br>
         <button onclick="createAccount()">Создать аккаунт</button>
     </header>
     <main>
         <h2>All songs of users</h2>
         <ul>
             {{#each songs}}
-            <li>{{this.title}} - {{this.artist}}</li>
+            <li>
+                Artist {{this.artist}} - {{this.title}}
+                <audio controls>
+                    <source src="{{this.path}}" type="audio/mpeg">
+                    Ваш браузер не поддерживает элемент audio.
+                </audio>
+            </li>
             {{/each}}
         </ul>
         <button onclick="window.location.href='/album/create'">Создать альбом</button>
@@ -26,3 +32,4 @@
     <script src="/script.js"></script>
 </body>
 </html>
+

@@ -38,8 +38,8 @@ const getAllSongs = async() => {
                 // Создаем объект песни для каждого файла
                 allSongs.push({
                     title: path.basename(fileName), // Имя файла без пути
-                    artist: `Artist ${user.id}`, // Можно указать артиста по ID пользователя
-                    path: fileName // Полный путь к файлу
+                    artist: `${user.id}`, // Можно указать артиста по ID пользователя
+                    path: fileName, // Полный путь к файлу
                 });
             });
         }
@@ -80,6 +80,7 @@ app.post('/api/createAccount', async(req, res) => {
     await writeUsersFile(users);
     res.status(201).json(newUser);
 });
+
 
 // Маршрут для создания песни
 app.post('/api/createSong', async(req, res) => {
@@ -125,6 +126,35 @@ app.delete('/api/deleteAccount/:id', async(req, res) => {
     }
 });
 
+//маршрут для удаления песни
+app.delete('/api/deleteSong/:userId/songs/:songName', async(req, res) => { // Добавлено async
+    const userId = parseInt(req.params.userId, 10);
+    const songName = req.params.songName;
+
+    const users = await readUsersFile(); // Теперь используется await
+    const user = users.find(u => u.id === userId);
+
+    if (!user) return res.status(404).send('User not found.');
+
+    // Находим полный путь к файлу
+    const userFolder = path.join(__dirname, '../uploads/Artists', userId.toString());
+    const filePath = path.join(userFolder, songName); // Имя файла для удаления.
+
+    // Удаляем песню из списка
+    user.songs = user.songs.filter(song => song.split('/').pop() !== songName);
+
+    if (fs.existsSync(filePath)) {
+        await fs.unlink(filePath); // Удаляем файл
+    } else {
+        return res.status(404).send('File not found');
+    }
+
+    await writeUsersFile(users);
+    res.send({ message: 'Song deleted successfully.' });
+});
+
+
+
 // Маршрут для отображения профиля пользователя
 app.get('/profile/:id', async(req, res) => {
     const userId = parseInt(req.params.id);
@@ -134,10 +164,9 @@ app.get('/profile/:id', async(req, res) => {
     if (user) {
         const userSongs = user.songs.map(song => ({
             title: path.basename(song), // Имя файла без пути
-            artist: `Artist ${user.id}`, // Имя артиста (можно поменять по желанию)
+            artist: `${user.id}`, // Имя артиста (можно поменять по желанию)
             id: song // Или используйте уникальный ID для удаления
         }));
-
         res.render('profile', { user, songs: userSongs }); // Отправляем пользователя и его песни в шаблон
     } else {
         res.status(404).send('User not found');
